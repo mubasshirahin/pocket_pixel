@@ -3,7 +3,7 @@ import { User } from '../entities/User.entity';
 import { AppError } from '../errors/app-error';
 import { UsersRepository } from '../repositories/users.repository';
 import { usersRepository } from '../repositories';
-import { logger } from '.';
+import { logger } from './logger.service';
 
 export type { CreateUserInput };
 

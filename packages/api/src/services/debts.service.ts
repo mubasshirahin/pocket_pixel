@@ -3,7 +3,7 @@ import { AppError } from '../errors/app-error';
 import { DebtsRepository } from '../repositories/debts.repository';
 import { TransactionsRepository } from '../repositories/transactions.repository';
 import { debtsRepository, transactionsRepository } from '../repositories';
-import { logger } from '.';
+import { logger } from './logger.service';
 
 export type { CreateDebtInput, UpdateDebtInput, ApplyDebtInput, DebtDto, DebtStatus };
 

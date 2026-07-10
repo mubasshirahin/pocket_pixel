@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Mail, Lock, LogIn, Coins } from 'lucide-react';
+import GoogleSignInButton from '@/components/GoogleSignInButton';
 import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
 import { authApi } from '@/lib/api';
@@ -40,6 +41,20 @@ export default function SignInPage() {
       router.push('/');
     } catch (err: any) {
       setErrors({ form: err.message ?? 'Something went wrong. Please try again.' });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleSuccess = async (credential: string) => {
+    setErrors({});
+    setLoading(true);
+    try {
+      const res = await authApi.google(credential);
+      setSession(res.token, { id: res.id, name: res.name, email: res.email, avatar: res.avatar });
+      router.push('/');
+    } catch (err: any) {
+      setErrors({ form: err.message ?? 'Google sign-in failed. Please try again.' });
     } finally {
       setLoading(false);
     }
@@ -118,11 +133,25 @@ export default function SignInPage() {
 
             {errors.form && <p className="font-body-sm text-error text-center">{errors.form}</p>}
 
-            <div className="pt-1 flex flex-col gap-3">
+            <div className="flex flex-col gap-3 pt-1">
               <Button type="submit" variant="primary" disabled={loading} className="w-full py-3 flex items-center justify-center gap-2 group">
                 <LogIn className="w-5 h-5 group-active:scale-90 transition-transform" />
                 <span className="font-headline-sm uppercase tracking-wider">Enter the World</span>
               </Button>
+            </div>
+
+            {/* Pixel OR divider */}
+            <div className="flex items-center gap-3 py-1">
+              <div className="flex-1 h-0 border-t-4 border-dashed border-outline-variant" />
+              <span className="font-label-caps text-[10px] tracking-widest text-outline uppercase">Or</span>
+              <div className="flex-1 h-0 border-t-4 border-dashed border-outline-variant" />
+            </div>
+
+            <div>
+              <GoogleSignInButton
+                onSuccess={handleGoogleSuccess}
+                onError={() => setErrors({ form: 'Google sign-in failed. Please try again.' })}
+              />
             </div>
           </form>
 

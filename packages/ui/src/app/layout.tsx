@@ -3,6 +3,7 @@ import { Anybody, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import AuthGuard from '@/components/AuthGuard';
 import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration';
+import GoogleAuthProvider from '@/components/GoogleAuthProvider';
 
 const anybody = Anybody({
   subsets: ['latin'],
@@ -85,7 +86,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${anybody.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
       <body>
         <ServiceWorkerRegistration />
-        <AuthGuard>{children}</AuthGuard>
+        <GoogleAuthProvider>
+          <AuthGuard>{children}</AuthGuard>
+        </GoogleAuthProvider>
       </body>
     </html>
   );

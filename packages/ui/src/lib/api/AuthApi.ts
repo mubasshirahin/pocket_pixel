@@ -1,4 +1,4 @@
-import type { SignInPayload, SignUpPayload, User } from '@expense-tracker/shared';
+import type { GoogleSignInPayload, SignInPayload, SignUpPayload, User } from '@expense-tracker/shared';
 import ApiClient from './ApiClient';
 
 export interface AuthResponse extends User {
@@ -24,5 +24,9 @@ export default class AuthApi extends ApiClient {
 
   signOut(): Promise<{ message: string }> {
     return this.post('/sign-out');
+  }
+
+  google(credential: string): Promise<AuthResponse> {
+    return this.post<AuthResponse>('/google', { credential } satisfies GoogleSignInPayload);
   }
 }

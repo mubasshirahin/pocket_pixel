@@ -3,7 +3,7 @@ import { Tag } from '../entities/Tag.entity';
 import { AppError } from '../errors/app-error';
 import { TagsRepository } from '../repositories/tags.repository';
 import { tagsRepository } from '../repositories';
-import { logger } from '.';
+import { logger } from './logger.service';
 
 export type { CreateTagInput, UpdateTagInput };
 

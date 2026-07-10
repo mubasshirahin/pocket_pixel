@@ -2,7 +2,7 @@ import { UpdateUserPreferenceInput } from '@expense-tracker/shared';
 import { UserPreference } from '../entities/UserPreference.entity';
 import { PreferencesRepository } from '../repositories/preferences.repository';
 import { preferencesRepository } from '../repositories';
-import { logger } from '.';
+import { logger } from './logger.service';
 
 export type { UpdateUserPreferenceInput };
 

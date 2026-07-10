@@ -4,7 +4,7 @@ import { AppError } from '../errors/app-error';
 import { VaultsRepository } from '../repositories/vaults.repository';
 import { UsersRepository } from '../repositories/users.repository';
 import { vaultsRepository, usersRepository } from '../repositories';
-import { logger } from '.';
+import { logger } from './logger.service';
 
 export type { CreateVaultInput, UpdateVaultInput };
 

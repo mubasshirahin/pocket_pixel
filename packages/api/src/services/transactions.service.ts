@@ -3,7 +3,7 @@ import { Expense } from '../entities/Expense.entity';
 import { AppError } from '../errors/app-error';
 import { TransactionsRepository, TransactionDateFilter } from '../repositories/transactions.repository';
 import { transactionsRepository } from '../repositories';
-import { logger } from '.';
+import { logger } from './logger.service';
 
 /**
  * Business logic for one-off transactions. The repository is injected (defaults

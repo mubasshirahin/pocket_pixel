@@ -1,7 +1,8 @@
 import OpenAI from 'openai';
 import { ParsedTransaction, ModelUsage, UsageReport } from '@expense-tracker/shared';
 import { AppError } from '../errors/app-error';
-import { logger, tagsService } from '.';
+import { logger } from './logger.service';
+import { tagsService } from '.';
 
 export type { ParsedTransaction, ModelUsage, UsageReport };
 

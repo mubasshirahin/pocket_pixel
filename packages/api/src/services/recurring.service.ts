@@ -5,7 +5,8 @@ import { AppError } from '../errors/app-error';
 import { RecurringRepository } from '../repositories/recurring.repository';
 import { recurringRepository } from '../repositories';
 import { cancelRecurring, scheduleRecurring } from '../scheduler/recurring-scheduler';
-import { logger, tagsService } from '.';
+import { logger } from './logger.service';
+import { tagsService } from '.';
 
 export type { CreateRecurringInput, UpdateRecurringInput, RecurringDto, OccurrenceDto };
 

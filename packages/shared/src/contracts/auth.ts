@@ -17,3 +17,8 @@ export interface ChangePasswordPayload {
   currentPassword: string;
   newPassword: string;
 }
+
+export interface GoogleSignInPayload {
+  /** The Google ID token (JWT credential) returned by Google Identity Services. */
+  credential: string;
+}
